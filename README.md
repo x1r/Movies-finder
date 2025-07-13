@@ -1,46 +1,70 @@
-# Getting Started with Create React App
+# VK Movies
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Простое приложение для просмотра информации о фильмах с использованием React, TypeScript и открытого API Кинопоиска.
 
-## Available Scripts
+## Функционал
 
-In the project directory, you can run:
+- Отображение списка фильмов с бесконечным скроллом (по 50 фильмов за раз)
+- Фильтрация по жанрам, рейтингу и году выпуска
+- Синхронизация фильтров с URL
+- Просмотр детальной информации о фильме (постер, описание, рейтинг, дата выхода, жанры)
+- Добавление фильмов в "Избранное" с подтверждением через модальное окно
+- Страница избранных фильмов
+- Современный адаптивный интерфейс
 
-### `npm start`
+## Технологии
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React + TypeScript
+- MobX (управление состоянием избранного)
+- React Router (роутинг)
+- Axios (запросы к API)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Запуск проекта
 
-### `npm test`
+1. **Клонируйте репозиторий:**
+   ```sh
+   git clone https://github.com/x1r/vk.git
+   cd vk
+   ```
+2. **Установите зависимости:**
+   ```sh
+   pnpm install
+   # или npm install
+   ```
+3. **Создайте файл `.env` на основе `.env.default` и укажите свой API-ключ Кинопоиска:**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   ```sh
+   cp .env.default .env
+   # или вручную создайте .env
+   ```
 
-### `npm run build`
+   В файле .env:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   ```env
+   REACT_APP_KINOPOISK_DEV_API_KEY=ваш_ключ_от_kinopoisk.dev
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   Получить ключ можно на https://kinopoisk.dev/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. **Запустите приложение:**
+   ```sh
+   pnpm start
+   # или npm start
+   ```
+   Приложение будет доступно по адресу http://localhost:3000
 
-### `npm run eject`
+## Структура проекта
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- `src/pages/` — страницы (список фильмов, детали, избранное)
+- `src/components/` — переиспользуемые компоненты (MovieCard, Filters)
+- `src/api/` — работа с API Кинопоиска
+- `src/stores/` — MobX store для избранного
+- `src/hooks/` — хуки (например, `useIsMobile` для определения мобильного устройства, а также другие пользовательские хуки для повторного использования логики)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Переменные окружения
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Создайте файл `.env` или используйте `.env.default`:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+REACT_APP_KINOPOISK_DEV_API_KEY=your_api_key_here
+```
